@@ -154,7 +154,7 @@ player (Mpyg321Player or Mpyg123Player)"""
         if self.status == PlayerStatus.PLAYING:
             self.pause()
         elif self.status == PlayerStatus.PAUSED:
-            self.resume()            
+            self.resume()
 
     def resume(self):
         """Resume the player"""
@@ -248,6 +248,7 @@ player (Mpyg321Player or Mpyg123Player)"""
         else:
             # The music doesn't stop if it is looped
             self._trigger_event(MPyg321Events.ANY_STOP)
+            self.status = PlayerStatus.STOPPED
             self.on_any_stop()
         self._trigger_event(MPyg321Events.MUSIC_END)
         self.on_music_end()
